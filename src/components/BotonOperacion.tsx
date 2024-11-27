@@ -1,5 +1,6 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 import { GlobalStyles } from "../themes/GlobalStyles";
+import * as Haptics from 'expo-haptics';
 
 interface Props {
     label: string,
@@ -11,27 +12,35 @@ export const BotonOperacion = ({ label, onPress }: Props) => {
         switch (true) {
             case label === '0':
                 return GlobalStyles.boton0;
-            case !isNaN(Number(label)): // cast a number para que si es un numero funcion el isNaN
+            case !isNaN(Number(label)): // cast a number para que si es un número funcione isNaN
                 return GlobalStyles.boton;
             case label === '/':
-                return GlobalStyles.botonOperador;
             case label === 'x':
-                return GlobalStyles.botonOperador;
             case label === '-':
-                return GlobalStyles.botonOperador;
             case label === '+':
-                return GlobalStyles.botonOperador;
             case label === '=':
                 return GlobalStyles.botonOperador;
             default:
-                return GlobalStyles.botonResto;    
+                return GlobalStyles.botonOtros;    
         }
     };
+
+    const vibrarYonPress = () => {
+        if (onPress) {
+            onPress();
+            Haptics.selectionAsync();
+            console.log('vibro');
+        }
+
+    }
+
     return (
         <Pressable>
             <Text
                 style={[getStyle(label), styles.separacion]}
-                onPress={onPress}>{label}</Text>
+                onPress={vibrarYonPress}>
+                {label}
+            </Text>
         </Pressable>
     )
 };

@@ -1,10 +1,11 @@
 export const Color = {
     blanco: '#fff',
     negro: '#000',
-    rojoOperaciones: '#e74c3c',
-    grisResto: '#989595',
+    numeros: '#713b00',
+    botonOperadores: '#ee6811',
+    botonoOtros: '#f0ece4',
     negroNumeros: '#3c3c3c',
-    blancoFondo: '#fef5e7',
-    fondo: '#808080',
+    botonNumeros: '#eaca85',
+    fondo: '#fefcb8',
 
 };
